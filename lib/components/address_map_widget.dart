@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:trackasia/app_bloc.dart';
-import 'package:trackasia/app_event.dart';
-import 'package:trackasia/core/api_service.dart';
-import 'package:trackasia/model/feature_model/feature_model.dart';
-import 'package:trackasia/utils/map_option_utils.dart';
-import 'package:trackasia/utils/map_utils.dart';
-import 'package:trackasia_gl/trackasia_gl.dart';
+import 'package:mapvina/app_bloc.dart';
+import 'package:mapvina/app_event.dart';
+import 'package:mapvina/core/api_service.dart';
+import 'package:mapvina/model/feature_model/feature_model.dart';
+import 'package:mapvina/utils/map_option_utils.dart';
+import 'package:mapvina/utils/map_utils.dart';
+import 'package:mapvina_gl/mapvina_gl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class AddressMapWidget extends StatefulWidget {

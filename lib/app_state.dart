@@ -1,4 +1,4 @@
-import 'package:trackasia_gl/trackasia_gl.dart';
+import 'package:mapvina_gl/mapvina_gl.dart';
 
 abstract class AppState {}
 

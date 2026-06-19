@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:geolocator/geolocator.dart';
-import 'package:trackasia_gl/trackasia_gl.dart';
+import 'package:mapvina_gl/mapvina_gl.dart';
 
 class MapOptionHelper {
   static void addMarker(mapController, LatLng position) {

@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
-import 'package:trackasia/constants.dart';
-import 'package:trackasia_gl/trackasia_gl.dart';
+import 'package:mapvina/constants.dart';
+import 'package:mapvina_gl/mapvina_gl.dart';
 
 class MapHelper {
   static String urlStyle(String idCountry, {bool is3D = false}) {

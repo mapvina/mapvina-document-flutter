@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:ui' as _ui;
 
-class TrackasiaUtils {
+class MapvinaUtils {
   static Future<Uint8List> svgToBytes(String assetPath) async {
     final byteData = await rootBundle.load(assetPath);
     return byteData.buffer.asUint8List();

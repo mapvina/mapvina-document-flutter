@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
-import 'package:trackasia/model/feature_model/feature_model.dart';
+import 'package:mapvina/model/feature_model/feature_model.dart';
 
 class ApiService {
   final Dio _dio = Dio();
@@ -9,7 +9,7 @@ class ApiService {
   Future<List<FeatureModel>> autocomplete(String searchText) async {
     try {
       final response = await _dio.get(
-        'https://maps.track-asia.com/api/v1/autocomplete',
+        'https://maps.map-vina.com/api/v1/autocomplete',
         queryParameters: {
           'lang': 'vi',
           'key': 'public',

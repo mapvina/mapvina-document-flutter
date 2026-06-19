@@ -3,9 +3,9 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 // import 'package:flutter_mapbox_navigation/flutter_mapbox_navigation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:trackasia/components/address_map_widget.dart';
-import 'package:trackasia_gl/trackasia_gl.dart';
-import 'package:trackasia/utils/map_utils.dart';
+import 'package:mapvina/components/address_map_widget.dart';
+import 'package:mapvina_gl/mapvina_gl.dart';
+import 'package:mapvina/utils/map_utils.dart';
 
 import 'utils/map_option_utils.dart';
 
@@ -18,7 +18,7 @@ class _WayPointViewPageState extends State<WayPointViewPage> {
   final initialLocation = const LatLng(16.25658, 106.31679);
 
   final double defaultZoomRate = 4.8;
-  TrackasiaMapController? mapController;
+  MapvinaMapController? mapController;
   String countryId = "vn";
   bool? isShowAddressTo = true;
 
@@ -37,7 +37,7 @@ class _WayPointViewPageState extends State<WayPointViewPage> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        TrackasiaMap(
+        MapvinaMap(
           styleString: MapHelper.getUrlStyle(countryId),
           compassEnabled: true,
           tiltGesturesEnabled: true,
@@ -111,7 +111,7 @@ class _WayPointViewPageState extends State<WayPointViewPage> {
     );
   }
 
-  void _onMapCreated(TrackasiaMapController controller) async {
+  void _onMapCreated(MapvinaMapController controller) async {
     mapController = controller;
   }
 

@@ -1,10 +1,10 @@
 Update Document
 
-# TrackAsia Flutter Demo Application
+# MapVina Flutter Demo Application
 
 ## Giới Thiệu
 
-Đây là ứng dụng demo cho TrackAsia Flutter GL - một thư viện bản đồ mạnh mẽ dành cho ứng dụng Flutter. Ứng dụng demo này minh họa các tính năng chính của TrackAsia bao gồm hiển thị bản đồ, tìm kiếm địa chỉ, clustering, animation, và nhiều tính năng khác trên nhiều quốc gia khác nhau.
+Đây là ứng dụng demo cho MapVina Flutter GL - một thư viện bản đồ mạnh mẽ dành cho ứng dụng Flutter. Ứng dụng demo này minh họa các tính năng chính của MapVina bao gồm hiển thị bản đồ, tìm kiếm địa chỉ, clustering, animation, và nhiều tính năng khác trên nhiều quốc gia khác nhau.
 
 ## Tính Năng Chính
 
@@ -42,7 +42,7 @@ Trước khi chạy ứng dụng demo này, hãy đảm bảo bạn có:
 
 ```bash
 git clone <repository-url>
-cd trackasia-document-flutter-github
+cd mapvina-document-flutter-github
 ```
 
 ### Bước 2: Cài Đặt Dependencies
@@ -54,8 +54,8 @@ dependencies:
   flutter:
     sdk: flutter
   
-  # TrackAsia Core
-  trackasia_gl: 2.0.3
+  # MapVina Core
+  mapvina_gl: 2.0.3
   
   # State Management
   flutter_bloc: ^8.1.4
@@ -96,12 +96,12 @@ flutter pub get
 
 ## Triển Khai Cơ Bản
 
-### Bước 1: Import Package TrackAsia
+### Bước 1: Import Package MapVina
 
 Thêm dòng import sau vào file Dart của bạn:
 
 ```dart
-import 'package:trackasia_gl/trackasia_gl.dart';
+import 'package:mapvina_gl/mapvina_gl.dart';
 ```
 
 ### Bước 2: Tạo Map Controller
@@ -109,20 +109,20 @@ import 'package:trackasia_gl/trackasia_gl.dart';
 Định nghĩa biến controller để quản lý bản đồ:
 
 ```dart
-TrackasiaMapController? mapController;
+MapvinaMapController? mapController;
 ```
 
 ### Bước 3: Triển Khai Widget Bản Đồ
 
-Thêm widget TrackasiaMap vào phương thức build:
+Thêm widget MapvinaMap vào phương thức build:
 
 ```dart
 @override
 Widget build(BuildContext context) {
   return Scaffold(
-    body: TrackasiaMap(
+    body: MapvinaMap(
       onMapCreated: _onMapCreated,
-      styleString: "https://maps.track-asia.com/styles/v1/streets.json?key=public",
+      styleString: "https://maps.map-vina.com/styles/v1/streets.json?key=public",
       initialCameraPosition: const CameraPosition(target: LatLng(16.25658, 106.31679), zoom: 4.8),
       onStyleLoadedCallback: _onStyleLoadedCallback,
     ),
@@ -135,7 +135,7 @@ Widget build(BuildContext context) {
 Thêm các phương thức callback cần thiết:
 
 ```dart
-void _onMapCreated(TrackasiaMapController controller) {
+void _onMapCreated(MapvinaMapController controller) {
   mapController = controller;
 }
 
@@ -168,7 +168,7 @@ Symbol addMarker(LatLng position) {
 Bật tính năng theo dõi vị trí người dùng:
 
 ```dart
-TrackasiaMap(
+MapvinaMap(
   // Các thuộc tính khác...
   myLocationEnabled: true,
   myLocationTrackingMode: MyLocationTrackingMode.Tracking,
@@ -181,7 +181,7 @@ TrackasiaMap(
 Bật các điều khiển tương tác bản đồ:
 
 ```dart
-TrackasiaMap(
+MapvinaMap(
   // Các thuộc tính khác...
   compassEnabled: true,
   zoomGesturesEnabled: true,
@@ -195,7 +195,7 @@ TrackasiaMap(
 Xử lý sự kiện click trên bản đồ:
 
 ```dart
-TrackasiaMap(
+MapvinaMap(
   // Các thuộc tính khác...
   onMapClick: (Point<double> point, LatLng coordinates) {
     // Xử lý sự kiện click
@@ -268,12 +268,12 @@ android {
 <true/>
 ```
 
-2. Nếu bạn sử dụng Cocoapods, hãy đảm bảo có repository TrackAsia Cocoapods:
-   [TrackAsia Cocoapods Repository](https://github.com/track-asia/trackasia-cocoapods)
+2. Nếu bạn sử dụng Cocoapods, hãy đảm bảo có repository MapVina Cocoapods:
+   [MapVina Cocoapods Repository](https://github.com/map-vina/mapvina-cocoapods)
 
 ### Cấu Hình Web
 
-Đối với hỗ trợ web, đảm bảo bạn đã cài đặt và cấu hình đúng package `trackasia_gl_web`.
+Đối với hỗ trợ web, đảm bảo bạn đã cài đặt và cấu hình đúng package `mapvina_gl_web`.
 
 ## Xử Lý Sự Cố
 
@@ -286,29 +286,29 @@ android {
 ### Mẹo Debug
 
 - Sử dụng lệnh `print` hoặc logger để theo dõi các sự kiện vòng đời bản đồ.
-- Kiểm tra console để xem thông báo lỗi liên quan đến TrackAsia.
+- Kiểm tra console để xem thông báo lỗi liên quan đến MapVina.
 - Xác minh tất cả dependencies đã được cài đặt và cập nhật đúng cách.
 
 ## Hình Ảnh Demo
 
 <p align="center">
-  <img src="https://git.advn.vn/sangnguyen/trackasia-document/-/raw/master/images/flutter_1.png" alt="FLUTTER" width="18%">   
-  <img src="https://git.advn.vn/sangnguyen/trackasia-document/-/raw/master/images/flutter_2.png" alt="FLUTTER" width="18%">
-  <img src="https://git.advn.vn/sangnguyen/trackasia-document/-/raw/master/images/flutter_3.png" alt="FLUTTER" width="18%">
-  <img src="https://git.advn.vn/sangnguyen/trackasia-document/-/raw/master/images/flutter_4.png" alt="FLUTTER" width="18%">
+  <img src="https://git.advn.vn/sangnguyen/mapvina-document/-/raw/master/images/flutter_1.png" alt="FLUTTER" width="18%">   
+  <img src="https://git.advn.vn/sangnguyen/mapvina-document/-/raw/master/images/flutter_2.png" alt="FLUTTER" width="18%">
+  <img src="https://git.advn.vn/sangnguyen/mapvina-document/-/raw/master/images/flutter_3.png" alt="FLUTTER" width="18%">
+  <img src="https://git.advn.vn/sangnguyen/mapvina-document/-/raw/master/images/flutter_4.png" alt="FLUTTER" width="18%">
 </p>
 
 ## Tài Nguyên
 
 ### Repository Chính Thức
 
-- [TrackAsia Flutter GL (Thư viện chính)](https://github.com/track-asia/trackasia-flutter-gl)
-- [TrackAsia Cocoapods (Cài đặt iOS)](https://github.com/track-asia/trackasia-cocoapods)
-- [TrackAsia Flutter Podspecs (Cấu hình Podspec)](https://github.com/track-asia/trackasia-flutter-podspecs)
+- [MapVina Flutter GL (Thư viện chính)](https://github.com/map-vina/mapvina-flutter-gl)
+- [MapVina Cocoapods (Cài đặt iOS)](https://github.com/map-vina/mapvina-cocoapods)
+- [MapVina Flutter Podspecs (Cấu hình Podspec)](https://github.com/map-vina/mapvina-flutter-podspecs)
 
 ### Dự Án Mẫu
 
-Repository TrackAsia Flutter GL chứa các dự án mẫu minh họa các tính năng và trường hợp sử dụng khác nhau. Clone repository và khám phá các ví dụ để hiểu rõ hơn cách triển khai các tính năng cụ thể.
+Repository MapVina Flutter GL chứa các dự án mẫu minh họa các tính năng và trường hợp sử dụng khác nhau. Clone repository và khám phá các ví dụ để hiểu rõ hơn cách triển khai các tính năng cụ thể.
 
 ### Hỗ Trợ Cộng Đồng
 
@@ -319,4 +319,4 @@ Nếu bạn gặp vấn đề hoặc có câu hỏi, bạn có thể:
 
 ## Kết Luận
 
-TrackAsia cung cấp giải pháp bản đồ mạnh mẽ cho ứng dụng Flutter với nhiều tính năng và tùy chọn tùy chỉnh. Bằng cách làm theo hướng dẫn này, bạn có thể tích hợp thành công TrackAsia vào dự án Flutter của mình và tận dụng các khả năng của nó để tạo trải nghiệm bản đồ hấp dẫn cho người dùng.
+MapVina cung cấp giải pháp bản đồ mạnh mẽ cho ứng dụng Flutter với nhiều tính năng và tùy chọn tùy chỉnh. Bằng cách làm theo hướng dẫn này, bạn có thể tích hợp thành công MapVina vào dự án Flutter của mình và tận dụng các khả năng của nó để tạo trải nghiệm bản đồ hấp dẫn cho người dùng.

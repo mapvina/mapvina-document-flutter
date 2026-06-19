@@ -2,13 +2,13 @@ import 'dart:math';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:trackasia_gl/trackasia_gl.dart';
-import 'trackasia_util.dart';
+import 'package:mapvina_gl/mapvina_gl.dart';
+import 'mapvina_util.dart';
 
-class TrackasiaClusterSource {
+class MapvinaClusterSource {
   //================MAP CHART LAYER==============//
-  Future<void>? addTrackasiaClusterMap(
-      {required TrackasiaMapController? mapController, required String sourceId, required Map<String, dynamic> dataMap, required String keyChartName}) async {
+  Future<void>? addMapvinaClusterMap(
+      {required MapvinaMapController? mapController, required String sourceId, required Map<String, dynamic> dataMap, required String keyChartName}) async {
     final keyChartImageCircleRate = keyChartName + "_chart_image_circle_rate";
     final keyChartCircleRate = keyChartName + "_chart_circle_rate";
     final keyChartChildren = keyChartName + "_chart_circle_children";
@@ -27,7 +27,7 @@ class TrackasiaClusterSource {
     }
   }
 
-  Future<void>? addClusteredPointSource({required TrackasiaMapController? mapController, required String sourceId, required Map<String, dynamic>? data}) async {
+  Future<void>? addClusteredPointSource({required MapvinaMapController? mapController, required String sourceId, required Map<String, dynamic>? data}) async {
     final sourceIds = await mapController?.getSourceIds();
     if (sourceIds?.contains(sourceId) == true) {
       if (data != null) {
@@ -44,7 +44,7 @@ class TrackasiaClusterSource {
   }
 
   Future<void> addClusteredPointLayers(
-      {required TrackasiaMapController? mapController,
+      {required MapvinaMapController? mapController,
       required Map<String, dynamic> dataMap,
       required String sourceId,
       required String keyChartImageCircleRate,
@@ -60,8 +60,8 @@ class TrackasiaClusterSource {
   //================MAP CHART LAYER==============//
 
   //================MAP CHART ADD==============//
-  Future<void> addImageCircleRate({required TrackasiaMapController? mapController, required String keyLayer}) async {
-    final svgBytes = await TrackasiaUtils.createDonutChartPng(TrackasiaUtils.segments);
+  Future<void> addImageCircleRate({required MapvinaMapController? mapController, required String keyLayer}) async {
+    final svgBytes = await MapvinaUtils.createDonutChartPng(MapvinaUtils.segments);
     if (svgBytes != null) {
       await removeLayer(mapController: mapController, keyLayer: keyLayer);
       await mapController?.addImage(keyLayer, svgBytes);
@@ -69,7 +69,7 @@ class TrackasiaClusterSource {
   }
 
   Future<void> addChartCircleRate(
-      {required TrackasiaMapController? mapController, required String sourceId, required String keyLayer, required String keyImage}) async {
+      {required MapvinaMapController? mapController, required String sourceId, required String keyLayer, required String keyImage}) async {
     const pointKey = "point_count";
     await removeLayer(mapController: mapController, keyLayer: keyLayer);
     await mapController?.addSymbolLayer(
@@ -100,7 +100,7 @@ class TrackasiaClusterSource {
   }
 
   Future<void> addChangeChartCircleRate(
-      {required TrackasiaMapController? mapController,
+      {required MapvinaMapController? mapController,
       required String sourceId,
       required String keyLayer,
       required String keyImage,
@@ -120,7 +120,7 @@ class TrackasiaClusterSource {
         ]);
   }
 
-  Future<void> addCircleCount({required TrackasiaMapController? mapController, required String sourceId, required String keyLayer}) async {
+  Future<void> addCircleCount({required MapvinaMapController? mapController, required String sourceId, required String keyLayer}) async {
     const pointKey = "point_count";
     const pointAbbreviated = "point_count_abbreviated";
     const font = "Roboto Regular";
@@ -129,7 +129,7 @@ class TrackasiaClusterSource {
         filter: [Expressions.has, pointKey]);
   }
 
-  Future<void> addChartChildren({required TrackasiaMapController? mapController, required String sourceId, required String keyLayer}) async {
+  Future<void> addChartChildren({required MapvinaMapController? mapController, required String sourceId, required String keyLayer}) async {
     const pointKey = "point_count";
     await removeLayer(mapController: mapController, keyLayer: keyLayer);
     await mapController?.addCircleLayer(
@@ -139,36 +139,36 @@ class TrackasiaClusterSource {
           'match',
           ['get', 'mag'],
           1,
-          TrackasiaUtils.colors[0],
+          MapvinaUtils.colors[0],
           2,
-          TrackasiaUtils.colors[1],
+          MapvinaUtils.colors[1],
           3,
-          TrackasiaUtils.colors[2],
+          MapvinaUtils.colors[2],
           4,
-          TrackasiaUtils.colors[3],
+          MapvinaUtils.colors[3],
           5,
-          TrackasiaUtils.colors[4],
+          MapvinaUtils.colors[4],
           100,
-          TrackasiaUtils.colors[5],
+          MapvinaUtils.colors[5],
           101,
-          TrackasiaUtils.colors[6],
+          MapvinaUtils.colors[6],
           102,
-          TrackasiaUtils.colors[7],
+          MapvinaUtils.colors[7],
           103,
-          TrackasiaUtils.colors[8],
+          MapvinaUtils.colors[8],
           200,
-          TrackasiaUtils.colors[9],
+          MapvinaUtils.colors[9],
           201,
-          TrackasiaUtils.colors[10],
+          MapvinaUtils.colors[10],
           202,
-          TrackasiaUtils.colors[11],
+          MapvinaUtils.colors[11],
           203,
-          TrackasiaUtils.colors[12],
+          MapvinaUtils.colors[12],
           204,
-          TrackasiaUtils.colors[13],
+          MapvinaUtils.colors[13],
           205,
-          TrackasiaUtils.colors[14],
-          TrackasiaUtils.colors[15],
+          MapvinaUtils.colors[14],
+          MapvinaUtils.colors[15],
         ], circleRadius: 10, circleStrokeWidth: 1, circleStrokeColor: "#FFA500"),
         filter: [
           "!",
@@ -176,7 +176,7 @@ class TrackasiaClusterSource {
         ]);
   }
 
-  Future<void> removeLayer({required TrackasiaMapController? mapController, required String keyLayer}) async {
+  Future<void> removeLayer({required MapvinaMapController? mapController, required String keyLayer}) async {
     final sourceIds = await mapController?.getLayerIds();
     if (sourceIds?.contains(keyLayer) == true) {
       await mapController?.removeLayer(keyLayer);
@@ -196,7 +196,7 @@ class TrackasiaClusterSource {
   //   return groupedFeatures;
   // }
 
-  Future<void> addChangeChartCircleData({required TrackasiaMapController? mapController, required String sourceId, required List<dynamic> dataMap}) async {
+  Future<void> addChangeChartCircleData({required MapvinaMapController? mapController, required String sourceId, required List<dynamic> dataMap}) async {
     if (dataMap.isNotEmpty == true) {
       // final groupedFeatures = groupChartCircleData(dataMap: dataMap);
       // groupedFeatures.forEach((String suggest, List<Map<String, dynamic>> group) async {
@@ -208,8 +208,8 @@ class TrackasiaClusterSource {
       //     String keyImage = createImageId(suggest);
       //     double percentage = percentages[suggest]!;
       //     var rnd = Random();
-      //     Map<Color, double> segment = {TrackasiaUtils.colors[rnd.nextInt(4)]: percentage / 100}; // Chỉ sử dụng một màu sắc cho mỗi biểu đồ
-      //     Uint8List? chartPng = await TrackasiaUtils.createDonutChartPng(segment);
+      //     Map<Color, double> segment = {MapvinaUtils.colors[rnd.nextInt(4)]: percentage / 100}; // Chỉ sử dụng một màu sắc cho mỗi biểu đồ
+      //     Uint8List? chartPng = await MapvinaUtils.createDonutChartPng(segment);
       //     if (chartPng != null) {
       //       await mapController?.addImage(keyLayer, chartPng);
       //       addChangeChartCircleRate(sourceId: sourceId, mapController: mapController, keyLayer: keyLayer, keyImage: keyImage, suggest: suggest);
@@ -220,7 +220,7 @@ class TrackasiaClusterSource {
         var rnd = Random();
         String id = feature['properties']['id'] ?? rnd.nextInt(1000);
         String keyLayer = createKeyLayer(id);
-        // Map<Color, double> segment = {TrackasiaUtils.colors[rnd.nextInt(4)]: percentage / 100};
+        // Map<Color, double> segment = {MapvinaUtils.colors[rnd.nextInt(4)]: percentage / 100};
       }
     }
   }

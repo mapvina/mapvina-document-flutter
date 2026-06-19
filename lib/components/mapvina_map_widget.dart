@@ -3,26 +3,26 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:trackasia/app_bloc.dart';
-import 'package:trackasia/app_state.dart';
-import 'package:trackasia/utils/map_option_utils.dart';
-import 'package:trackasia/utils/map_utils.dart';
-import 'package:trackasia_gl/trackasia_gl.dart';
+import 'package:mapvina/app_bloc.dart';
+import 'package:mapvina/app_state.dart';
+import 'package:mapvina/utils/map_option_utils.dart';
+import 'package:mapvina/utils/map_utils.dart';
+import 'package:mapvina_gl/mapvina_gl.dart';
 
-class TrackAsiaMapWidget extends StatefulWidget {
-  const TrackAsiaMapWidget({super.key});
+class MapVinaMapWidget extends StatefulWidget {
+  const MapVinaMapWidget({super.key});
 
   @override
-  State<TrackAsiaMapWidget> createState() => _TrackAsiaMapWidgetState();
+  State<MapVinaMapWidget> createState() => _MapVinaMapWidgetState();
 }
 
-class _TrackAsiaMapWidgetState extends State<TrackAsiaMapWidget> {
+class _MapVinaMapWidgetState extends State<MapVinaMapWidget> {
   String countryId = "vn";
   final initialLocation = const LatLng(16.25658, 106.31679);
 
   final double defaultZoomRate = 4.8;
 
-  TrackasiaMapController? mapController;
+  MapvinaMapController? mapController;
 
   Future<void> getData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -50,7 +50,7 @@ class _TrackAsiaMapWidgetState extends State<TrackAsiaMapWidget> {
           );
           MapOptionHelper.addMarker(mapController, state.point);
         }
-        return TrackasiaMap(
+        return MapvinaMap(
           styleString: MapHelper.getUrlStyle(countryId),
           compassEnabled: true,
           myLocationEnabled: true,
@@ -69,7 +69,7 @@ class _TrackAsiaMapWidgetState extends State<TrackAsiaMapWidget> {
     );
   }
 
-  void _onMapCreated(TrackasiaMapController controller) async {
+  void _onMapCreated(MapvinaMapController controller) async {
     mapController = controller;
   }
 

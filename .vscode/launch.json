@@ -5,18 +5,18 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "trackasia",
+      "name": "mapvina",
       "request": "launch",
       "type": "dart"
     },
     {
-      "name": "trackasia (profile mode)",
+      "name": "mapvina (profile mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile"
     },
     {
-      "name": "trackasia (release mode)",
+      "name": "mapvina (release mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "release"

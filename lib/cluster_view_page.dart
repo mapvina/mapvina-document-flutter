@@ -3,10 +3,10 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:trackasia/constants.dart';
-import 'package:trackasia/utils/trackasia_cluster_source.dart';
-import 'package:trackasia_gl/trackasia_gl.dart';
-import 'package:trackasia/utils/map_utils.dart';
+import 'package:mapvina/constants.dart';
+import 'package:mapvina/utils/mapvina_cluster_source.dart';
+import 'package:mapvina_gl/mapvina_gl.dart';
+import 'package:mapvina/utils/map_utils.dart';
 import 'package:http/http.dart' as http;
 
 class ClusterViewPage extends StatefulWidget {
@@ -18,9 +18,9 @@ class _ClusterViewPageState extends State<ClusterViewPage> {
   final initialLocation = const LatLng(16.25658, 106.31679);
   Map<String, dynamic> dataMap = {};
   final double defaultZoomRate = 4.8;
-  TrackasiaClusterSource clusterSource = TrackasiaClusterSource();
-  TrackasiaMapController? mapController;
-  final sourceId = "trackasia_pet";
+  MapvinaClusterSource clusterSource = MapvinaClusterSource();
+  MapvinaMapController? mapController;
+  final sourceId = "mapvina_pet";
   final keyChartName = "pet";
   String countryId = "vn";
 
@@ -36,7 +36,7 @@ class _ClusterViewPageState extends State<ClusterViewPage> {
 
   @override
   Widget build(BuildContext context) {
-    return TrackasiaMap(
+    return MapvinaMap(
       styleString: MapHelper.getUrlStyle(countryId),
       compassEnabled: true,
       tiltGesturesEnabled: true,
@@ -51,7 +51,7 @@ class _ClusterViewPageState extends State<ClusterViewPage> {
     );
   }
 
-  void _onMapCreated(TrackasiaMapController controller) async {
+  void _onMapCreated(MapvinaMapController controller) async {
     mapController = controller;
   }
 
@@ -83,7 +83,7 @@ class _ClusterViewPageState extends State<ClusterViewPage> {
   Future<void>? addResponseDataClusterMap(Map<String, dynamic> dataMap) async {
     if (dataMap.isNotEmpty) {
       dataMap["type"] = "FeatureCollection";
-      clusterSource.addTrackasiaClusterMap(mapController: mapController, dataMap: dataMap, sourceId: sourceId, keyChartName: keyChartName);
+      clusterSource.addMapvinaClusterMap(mapController: mapController, dataMap: dataMap, sourceId: sourceId, keyChartName: keyChartName);
     }
   }
 }

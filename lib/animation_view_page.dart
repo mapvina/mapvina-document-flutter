@@ -2,8 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:trackasia_gl/trackasia_gl.dart';
-import 'package:trackasia/utils/map_utils.dart';
+import 'package:mapvina_gl/mapvina_gl.dart';
+import 'package:mapvina/utils/map_utils.dart';
 
 class AnimationViewPage extends StatefulWidget {
   @override
@@ -15,7 +15,7 @@ class _AnimationViewPageState extends State<AnimationViewPage> {
 
   final double defaultZoomRate = 4.8;
 
-  TrackAsiaMapController? mapController;
+  MapVinaMapController? mapController;
 
   String countryId = "vn";
 
@@ -32,7 +32,7 @@ class _AnimationViewPageState extends State<AnimationViewPage> {
 
   @override
   Widget build(BuildContext context) {
-    return TrackAsiaMap(
+    return MapVinaMap(
       styleString: MapHelper.getUrlStyle(countryId),
       compassEnabled: true,
       myLocationEnabled: true,

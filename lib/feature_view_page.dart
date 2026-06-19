@@ -2,9 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:trackasia/constants.dart';
-import 'package:trackasia_gl/trackasia_gl.dart';
-import 'package:trackasia/utils/map_utils.dart';
+import 'package:mapvina/constants.dart';
+import 'package:mapvina_gl/mapvina_gl.dart';
+import 'package:mapvina/utils/map_utils.dart';
 
 class FeatureViewPage extends StatefulWidget {
   @override
@@ -16,7 +16,7 @@ class _FeatureViewPageState extends State<FeatureViewPage> {
 
   final double defaultZoomRate = 4.8;
 
-  TrackasiaMapController? mapController;
+  MapvinaMapController? mapController;
 
   String countryId = "vn";
 
@@ -32,7 +32,7 @@ class _FeatureViewPageState extends State<FeatureViewPage> {
 
   @override
   Widget build(BuildContext context) {
-    return TrackasiaMap(
+    return MapvinaMap(
       styleString: MapHelper.getUrlStyle(countryId),
       compassEnabled: true,
       tiltGesturesEnabled: true,
@@ -46,7 +46,7 @@ class _FeatureViewPageState extends State<FeatureViewPage> {
     );
   }
 
-  void _onMapCreated(TrackasiaMapController controller) async {
+  void _onMapCreated(MapvinaMapController controller) async {
     mapController = controller;
   }
 

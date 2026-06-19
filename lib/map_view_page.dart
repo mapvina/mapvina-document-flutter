@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:trackasia/components/address_map_widget.dart';
-import 'components/trackasia_map_widget.dart';
+import 'package:mapvina/components/address_map_widget.dart';
+import 'components/mapvina_map_widget.dart';
 // import 'package:rudder_sdk_flutter/RudderController.dart';
 
 class MapViewPage extends StatefulWidget {
@@ -21,7 +21,7 @@ class _MapViewPageState extends State<MapViewPage> {
       },
       child: Stack(
         children: [
-          const TrackAsiaMapWidget(),
+          const MapVinaMapWidget(),
           Padding(
               padding: EdgeInsets.only(
                 bottom: MediaQuery.of(context).viewInsets.bottom,

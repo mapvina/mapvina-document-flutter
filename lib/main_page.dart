@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:trackasia/animation_view_page.dart';
-import 'package:trackasia/app_bloc.dart';
-import 'package:trackasia/app_state.dart';
-import 'package:trackasia/cluster_view_page.dart';
-import 'package:trackasia/feature_view_page.dart';
-import 'package:trackasia/map_view_page.dart';
-import 'package:trackasia/utils/map_utils.dart';
-import 'package:trackasia/waypoint_view_page.dart';
+import 'package:mapvina/animation_view_page.dart';
+import 'package:mapvina/app_bloc.dart';
+import 'package:mapvina/app_state.dart';
+import 'package:mapvina/cluster_view_page.dart';
+import 'package:mapvina/feature_view_page.dart';
+import 'package:mapvina/map_view_page.dart';
+import 'package:mapvina/utils/map_utils.dart';
+import 'package:mapvina/waypoint_view_page.dart';
 
 import 'app_event.dart';
 

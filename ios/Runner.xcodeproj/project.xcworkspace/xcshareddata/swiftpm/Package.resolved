@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "mapvina-gl-native-distribution",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mapvina/mapvina-gl-native-distribution",
+      "state" : {
+        "revision" : "80632031c693cff41f0a7e29490d7454061f1d3a",
+        "version" : "1.0.0"
+      }
+    }
+  ],
+  "version" : 2
+}
