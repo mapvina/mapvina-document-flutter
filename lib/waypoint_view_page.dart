@@ -18,7 +18,7 @@ class _WayPointViewPageState extends State<WayPointViewPage> {
   final initialLocation = const LatLng(16.25658, 106.31679);
 
   final double defaultZoomRate = 4.8;
-  MapvinaMapController? mapController;
+  MapVinaMapController? mapController;
   String countryId = "vn";
   bool? isShowAddressTo = true;
 
@@ -37,7 +37,7 @@ class _WayPointViewPageState extends State<WayPointViewPage> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        MapvinaMap(
+        MapVinaMap(
           styleString: MapHelper.getUrlStyle(countryId),
           compassEnabled: true,
           tiltGesturesEnabled: true,
@@ -111,7 +111,7 @@ class _WayPointViewPageState extends State<WayPointViewPage> {
     );
   }
 
-  void _onMapCreated(MapvinaMapController controller) async {
+  void _onMapCreated(MapVinaMapController controller) async {
     mapController = controller;
   }
 

@@ -16,7 +16,7 @@ class _FeatureViewPageState extends State<FeatureViewPage> {
 
   final double defaultZoomRate = 4.8;
 
-  MapvinaMapController? mapController;
+  MapVinaMapController? mapController;
 
   String countryId = "vn";
 
@@ -32,7 +32,7 @@ class _FeatureViewPageState extends State<FeatureViewPage> {
 
   @override
   Widget build(BuildContext context) {
-    return MapvinaMap(
+    return MapVinaMap(
       styleString: MapHelper.getUrlStyle(countryId),
       compassEnabled: true,
       tiltGesturesEnabled: true,
@@ -46,7 +46,7 @@ class _FeatureViewPageState extends State<FeatureViewPage> {
     );
   }
 
-  void _onMapCreated(MapvinaMapController controller) async {
+  void _onMapCreated(MapVinaMapController controller) async {
     mapController = controller;
   }
 

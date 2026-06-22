@@ -9,7 +9,7 @@ class ApiService {
   Future<List<FeatureModel>> autocomplete(String searchText) async {
     try {
       final response = await _dio.get(
-        'https://maps.map-vina.com/api/v1/autocomplete',
+        'https://maps.mapvina.com/api/v1/autocomplete',
         queryParameters: {
           'lang': 'vi',
           'key': 'public',

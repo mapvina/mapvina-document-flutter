@@ -22,7 +22,7 @@ class _MapVinaMapWidgetState extends State<MapVinaMapWidget> {
 
   final double defaultZoomRate = 4.8;
 
-  MapvinaMapController? mapController;
+  MapVinaMapController? mapController;
 
   Future<void> getData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -50,7 +50,7 @@ class _MapVinaMapWidgetState extends State<MapVinaMapWidget> {
           );
           MapOptionHelper.addMarker(mapController, state.point);
         }
-        return MapvinaMap(
+        return MapVinaMap(
           styleString: MapHelper.getUrlStyle(countryId),
           compassEnabled: true,
           myLocationEnabled: true,
@@ -69,7 +69,7 @@ class _MapVinaMapWidgetState extends State<MapVinaMapWidget> {
     );
   }
 
-  void _onMapCreated(MapvinaMapController controller) async {
+  void _onMapCreated(MapVinaMapController controller) async {
     mapController = controller;
   }
 

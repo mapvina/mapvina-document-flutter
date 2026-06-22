@@ -8,7 +8,7 @@ import 'mapvina_util.dart';
 class MapvinaClusterSource {
   //================MAP CHART LAYER==============//
   Future<void>? addMapvinaClusterMap(
-      {required MapvinaMapController? mapController, required String sourceId, required Map<String, dynamic> dataMap, required String keyChartName}) async {
+      {required MapVinaMapController? mapController, required String sourceId, required Map<String, dynamic> dataMap, required String keyChartName}) async {
     final keyChartImageCircleRate = keyChartName + "_chart_image_circle_rate";
     final keyChartCircleRate = keyChartName + "_chart_circle_rate";
     final keyChartChildren = keyChartName + "_chart_circle_children";
@@ -27,7 +27,7 @@ class MapvinaClusterSource {
     }
   }
 
-  Future<void>? addClusteredPointSource({required MapvinaMapController? mapController, required String sourceId, required Map<String, dynamic>? data}) async {
+  Future<void>? addClusteredPointSource({required MapVinaMapController? mapController, required String sourceId, required Map<String, dynamic>? data}) async {
     final sourceIds = await mapController?.getSourceIds();
     if (sourceIds?.contains(sourceId) == true) {
       if (data != null) {
@@ -44,7 +44,7 @@ class MapvinaClusterSource {
   }
 
   Future<void> addClusteredPointLayers(
-      {required MapvinaMapController? mapController,
+      {required MapVinaMapController? mapController,
       required Map<String, dynamic> dataMap,
       required String sourceId,
       required String keyChartImageCircleRate,
@@ -60,7 +60,7 @@ class MapvinaClusterSource {
   //================MAP CHART LAYER==============//
 
   //================MAP CHART ADD==============//
-  Future<void> addImageCircleRate({required MapvinaMapController? mapController, required String keyLayer}) async {
+  Future<void> addImageCircleRate({required MapVinaMapController? mapController, required String keyLayer}) async {
     final svgBytes = await MapvinaUtils.createDonutChartPng(MapvinaUtils.segments);
     if (svgBytes != null) {
       await removeLayer(mapController: mapController, keyLayer: keyLayer);
@@ -69,7 +69,7 @@ class MapvinaClusterSource {
   }
 
   Future<void> addChartCircleRate(
-      {required MapvinaMapController? mapController, required String sourceId, required String keyLayer, required String keyImage}) async {
+      {required MapVinaMapController? mapController, required String sourceId, required String keyLayer, required String keyImage}) async {
     const pointKey = "point_count";
     await removeLayer(mapController: mapController, keyLayer: keyLayer);
     await mapController?.addSymbolLayer(
@@ -100,7 +100,7 @@ class MapvinaClusterSource {
   }
 
   Future<void> addChangeChartCircleRate(
-      {required MapvinaMapController? mapController,
+      {required MapVinaMapController? mapController,
       required String sourceId,
       required String keyLayer,
       required String keyImage,
@@ -120,7 +120,7 @@ class MapvinaClusterSource {
         ]);
   }
 
-  Future<void> addCircleCount({required MapvinaMapController? mapController, required String sourceId, required String keyLayer}) async {
+  Future<void> addCircleCount({required MapVinaMapController? mapController, required String sourceId, required String keyLayer}) async {
     const pointKey = "point_count";
     const pointAbbreviated = "point_count_abbreviated";
     const font = "Roboto Regular";
@@ -129,7 +129,7 @@ class MapvinaClusterSource {
         filter: [Expressions.has, pointKey]);
   }
 
-  Future<void> addChartChildren({required MapvinaMapController? mapController, required String sourceId, required String keyLayer}) async {
+  Future<void> addChartChildren({required MapVinaMapController? mapController, required String sourceId, required String keyLayer}) async {
     const pointKey = "point_count";
     await removeLayer(mapController: mapController, keyLayer: keyLayer);
     await mapController?.addCircleLayer(
@@ -176,7 +176,7 @@ class MapvinaClusterSource {
         ]);
   }
 
-  Future<void> removeLayer({required MapvinaMapController? mapController, required String keyLayer}) async {
+  Future<void> removeLayer({required MapVinaMapController? mapController, required String keyLayer}) async {
     final sourceIds = await mapController?.getLayerIds();
     if (sourceIds?.contains(keyLayer) == true) {
       await mapController?.removeLayer(keyLayer);
@@ -196,7 +196,7 @@ class MapvinaClusterSource {
   //   return groupedFeatures;
   // }
 
-  Future<void> addChangeChartCircleData({required MapvinaMapController? mapController, required String sourceId, required List<dynamic> dataMap}) async {
+  Future<void> addChangeChartCircleData({required MapVinaMapController? mapController, required String sourceId, required List<dynamic> dataMap}) async {
     if (dataMap.isNotEmpty == true) {
       // final groupedFeatures = groupChartCircleData(dataMap: dataMap);
       // groupedFeatures.forEach((String suggest, List<Map<String, dynamic>> group) async {

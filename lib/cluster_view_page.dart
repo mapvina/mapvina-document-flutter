@@ -19,7 +19,7 @@ class _ClusterViewPageState extends State<ClusterViewPage> {
   Map<String, dynamic> dataMap = {};
   final double defaultZoomRate = 4.8;
   MapvinaClusterSource clusterSource = MapvinaClusterSource();
-  MapvinaMapController? mapController;
+  MapVinaMapController? mapController;
   final sourceId = "mapvina_pet";
   final keyChartName = "pet";
   String countryId = "vn";
@@ -36,7 +36,7 @@ class _ClusterViewPageState extends State<ClusterViewPage> {
 
   @override
   Widget build(BuildContext context) {
-    return MapvinaMap(
+    return MapVinaMap(
       styleString: MapHelper.getUrlStyle(countryId),
       compassEnabled: true,
       tiltGesturesEnabled: true,
@@ -51,7 +51,7 @@ class _ClusterViewPageState extends State<ClusterViewPage> {
     );
   }
 
-  void _onMapCreated(MapvinaMapController controller) async {
+  void _onMapCreated(MapVinaMapController controller) async {
     mapController = controller;
   }
 
