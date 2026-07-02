@@ -51,8 +51,10 @@ post_install do |installer|
         config.build_settings['ENABLE_BITCODE'] = 'NO'
     end
   end
-  installer.pods_project.build_configurations.each do |config|
-    config.build_settings["EXCLUDED_ARCHS[sdk=iphonesimulator*]"] = "arm64"
-  end
+  # NOTE: Do NOT exclude arm64 for the iOS Simulator. The MapVina GL native
+  # framework renders via OpenGL ES; on Apple Silicon, forcing the x86_64
+  # simulator slice (Rosetta) produces a blank/gray map surface that is not
+  # captured by `xcrun simctl io screenshot`. Building the native arm64
+  # simulator slice lets the map render and be captured correctly.
 end
 
