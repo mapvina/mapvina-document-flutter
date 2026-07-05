@@ -122,7 +122,7 @@ Widget build(BuildContext context) {
   return Scaffold(
     body: MapvinaMap(
       onMapCreated: _onMapCreated,
-      styleString: "https://maps.map-vina.com/styles/v1/streets.json?key=public",
+      styleString: "https://maps.mapvina.com/styles/v1/streets.json?key=public",
       initialCameraPosition: const CameraPosition(target: LatLng(16.25658, 106.31679), zoom: 4.8),
       onStyleLoadedCallback: _onStyleLoadedCallback,
     ),
@@ -269,7 +269,7 @@ android {
 ```
 
 2. Nếu bạn sử dụng Cocoapods, hãy đảm bảo có repository MapVina Cocoapods:
-   [MapVina Cocoapods Repository](https://github.com/map-vina/mapvina-cocoapods)
+   [MapVina Cocoapods Repository](https://github.com/mapvina/mapvina-cocoapods)
 
 ### Cấu Hình Web
 
@@ -302,9 +302,9 @@ android {
 
 ### Repository Chính Thức
 
-- [MapVina Flutter GL (Thư viện chính)](https://github.com/map-vina/mapvina-flutter-gl)
-- [MapVina Cocoapods (Cài đặt iOS)](https://github.com/map-vina/mapvina-cocoapods)
-- [MapVina Flutter Podspecs (Cấu hình Podspec)](https://github.com/map-vina/mapvina-flutter-podspecs)
+- [MapVina Flutter GL (Thư viện chính)](https://github.com/mapvina/mapvina-flutter-gl)
+- [MapVina Cocoapods (Cài đặt iOS)](https://github.com/mapvina/mapvina-cocoapods)
+- [MapVina Flutter Podspecs (Cấu hình Podspec)](https://github.com/mapvina/mapvina-flutter-podspecs)
 
 ### Dự Án Mẫu
 
