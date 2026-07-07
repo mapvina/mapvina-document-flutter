@@ -55,7 +55,7 @@ dependencies:
     sdk: flutter
   
   # MapVina Core
-  mapvina_gl: 2.0.3
+  mapvina_gl: 1.0.0
   
   # State Management
   flutter_bloc: ^8.1.4
