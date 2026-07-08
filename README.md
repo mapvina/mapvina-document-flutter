@@ -268,8 +268,8 @@ android {
 <true/>
 ```
 
-2. Nếu bạn sử dụng Cocoapods, hãy đảm bảo có repository MapVina Cocoapods:
-   [MapVina Cocoapods Repository](https://github.com/mapvina/mapvina-cocoapods)
+2. Native iOS được cung cấp tự động qua Swift Package Manager từ MapVina GL Native Distribution (không cần thêm repository CocoaPods riêng):
+   [MapVina GL Native Distribution](https://github.com/mapvina/mapvina-gl-native-distribution)
 
 ### Cấu Hình Web
 
@@ -302,9 +302,9 @@ android {
 
 ### Repository Chính Thức
 
-- [MapVina Flutter GL (Thư viện chính)](https://github.com/mapvina/mapvina-flutter-gl)
-- [MapVina Cocoapods (Cài đặt iOS)](https://github.com/mapvina/mapvina-cocoapods)
-- [MapVina Flutter Podspecs (Cấu hình Podspec)](https://github.com/mapvina/mapvina-flutter-podspecs)
+- [MapVina Flutter GL (Thư viện chính)](https://github.com/mapvina/flutter-mapvina-gl)
+- [MapVina GL Native Distribution (Native iOS)](https://github.com/mapvina/mapvina-gl-native-distribution)
+- [MapVina Flutter GL - iOS Podspec](https://github.com/mapvina/flutter-mapvina-gl/tree/main/mapvina_gl/ios)
 
 ### Dự Án Mẫu
 
