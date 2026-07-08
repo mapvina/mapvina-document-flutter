@@ -122,7 +122,7 @@ Widget build(BuildContext context) {
   return Scaffold(
     body: MapvinaMap(
       onMapCreated: _onMapCreated,
-      styleString: "https://maps.mapvina.com/styles/v1/streets.json?key=public",
+      styleString: "https://maps.mapvina.com/styles/v2/streets.json?key=public",
       initialCameraPosition: const CameraPosition(target: LatLng(16.25658, 106.31679), zoom: 4.8),
       onStyleLoadedCallback: _onStyleLoadedCallback,
     ),

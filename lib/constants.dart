@@ -6,15 +6,15 @@ class Constants {
   static const String baseurlMI = "https://my-maps.mapvina.com/";
 
   static const String urlStyleVN =
-      "https://maps.mapvina.com/styles/v1/streets.json?key=public";
+      "https://maps.mapvina.com/styles/v2/streets.json?key=public";
   static const String urlStyleSG =
-      "https://sg-maps.mapvina.com/styles/v1/streets.json?key=public";
+      "https://sg-maps.mapvina.com/styles/v2/streets.json?key=public";
   static const String urlStyleTH =
-      "https://th-maps.mapvina.com/styles/v1/streets.json?key=public";
+      "https://th-maps.mapvina.com/styles/v2/streets.json?key=public";
   static const String urlStyleTW =
-      "https://tw-maps.mapvina.com/styles/v1/streets.json?key=public";
+      "https://tw-maps.mapvina.com/styles/v2/streets.json?key=public";
   static const String urlStyleMI =
-      "https://my-maps.mapvina.com/styles/v1/streets.json?key=public";
+      "https://my-maps.mapvina.com/styles/v2/streets.json?key=public";
 
   static const String urlStyle3DVN =
       "https://tiles.mapvina.com/sats/v1/satellite/satellite.json?key=public";
