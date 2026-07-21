@@ -1,5 +1,9 @@
 allprojects {
     repositories {
+        // ⚠️ Required: the public android-sdk-geojson:1.0.0 ships the wrong
+        // com.mapvina.geojson.* namespace, while mapvina_gl expects
+        // io.github.mapvina.geojson.*. The correctly-packaged geojson is in mavenLocal.
+        mavenLocal()
         google()
         mavenCentral()
     }

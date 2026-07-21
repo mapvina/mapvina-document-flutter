@@ -14,7 +14,7 @@ Update Document
 - 🎯 **Waypoint Navigation**: Tính năng điều hướng với điểm đi và điểm đến
 - 🔘 **Clustering**: Hiển thị dữ liệu cluster từ API
 - ✨ **Animation**: Demo các hiệu ứng animation trên bản đồ
-- 📊 **Analytics**: Tích hợp RudderStack để theo dõi user behavior
+- 🗂️ **Quản lý trạng thái**: `flutter_bloc` (BLoC pattern)
 
 ## Mục Lục
 
@@ -53,37 +53,40 @@ cd mapvina-document-flutter-github
 dependencies:
   flutter:
     sdk: flutter
-  
+  cupertino_icons: ^1.0.2
+
   # MapVina Core
   mapvina_gl: 1.0.0
-  
+
   # State Management
   flutter_bloc: ^8.1.4
-  
-  # Location & Geocoding
+
+  # Location
   geolocator: ^11.0.0
-  
+  permission_handler: ^11.3.1
+
   # Networking
   dio: ^4.0.0
   http: ^1.2.0
-  
+
   # Data Persistence
-  shared_preferences: ^2.0.0
-  
-  # Analytics
-  rudder_sdk_flutter: ^3.1.0
-  
+  shared_preferences: ^2.3.2
+
   # UI & Utils
   flutter_screenutil: ^5.7.0
   textfield_tags: ^3.0.1
   dropdown_button2: ^2.3.9
-  permission_handler: 10.2.0
-  url_launcher: ^6.2.5
+  url_launcher: ^6.3.2
   intl: 0.18.0
-  
-  # JSON Serialization
+
+  # JSON Serialization / Codegen
   freezed: ^2.0.4
   json_serializable: ^6.2.0
+
+# ⚠️ Ghim phiên bản plugin dùng Gradle DSL cổ điển (xem mục "Kiểm chứng Build & Runtime").
+dependency_overrides:
+  url_launcher_android: 6.3.29
+  shared_preferences_android: 2.4.13
 ```
 
 Chạy lệnh sau để cài đặt dependencies:
@@ -91,6 +94,10 @@ Chạy lệnh sau để cài đặt dependencies:
 ```bash
 flutter pub get
 ```
+
+> ℹ️ **Đồng bộ với `pubspec.yaml` thực tế:** dự án **không** dùng `rudder_sdk_flutter`
+> (đã bỏ khỏi tài liệu). `permission_handler` là `^11.3.1`, `shared_preferences` là
+> `^2.3.2`, `url_launcher` là `^6.3.2`.
 
 ### Bước 3: Cấu Hình Platform
 
@@ -233,27 +240,38 @@ mapController?.animateCamera(
 
 ### Cấu Hình Android
 
-1. Cập nhật file `android/app/build.gradle`:
+Cấu hình thực tế của dự án (`android/app/build.gradle`):
 
 ```gradle
 android {
-    // ...
+    compileSdkVersion 36
+    ndkVersion "28.1.13356709"
+    namespace "com.example.mapvina"
     defaultConfig {
-        // ...
+        applicationId "com.example.mapvina"
         minSdkVersion 26
-        // ...
+        targetSdkVersion 35
     }
-    // ...
 }
 ```
 
-2. Thêm các quyền sau vào `AndroidManifest.xml`:
+Toolchain (`android/settings.gradle`): AGP `8.9.1`, Kotlin `2.2.20`, Gradle wrapper `8.11.1`.
+
+Quyền trong `AndroidManifest.xml`:
 
 ```xml
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 ```
+
+> ⚠️ **Hai chỉnh sửa bắt buộc để build được Android** (đã áp dụng, xem mục "Kiểm chứng"):
+> 1. **Ghim plugin dùng Gradle DSL cổ điển** trong `pubspec.yaml` (`url_launcher_android: 6.3.29`,
+>    `shared_preferences_android: 2.4.13`). Bản mới hơn dùng DSL `kotlin { compilerOptions {} }`
+>    của AGP built-in Kotlin mà toolchain AGP 8.9 không biên dịch được.
+> 2. **Thêm `mavenLocal()`** vào `android/build.gradle` (`allprojects.repositories`): artifact
+>    `android-sdk-geojson:1.0.0` publish công khai đóng gói sai namespace `com.mapvina.geojson.*`,
+>    trong khi `mapvina_gl` cần `io.github.mapvina.geojson.*` (bản đúng chỉ có trong Maven local).
 
 ### Cấu Hình iOS
 
@@ -268,8 +286,16 @@ android {
 <true/>
 ```
 
-2. Native iOS được cung cấp tự động qua Swift Package Manager từ MapVina GL Native Distribution (không cần thêm repository CocoaPods riêng):
-   [MapVina GL Native Distribution](https://github.com/mapvina/mapvina-gl-native-distribution)
+2. Native iOS (`MapVina.xcframework`) được cung cấp qua **Swift Package Manager** từ MapVina GL
+   Native Distribution — podspec **cố ý không** khai báo dependency này. Vì vậy **bắt buộc bật
+   Flutter SPM** trước khi build iOS:
+
+   ```bash
+   flutter config --enable-swift-package-manager
+   ```
+
+   Nếu không bật, build iOS sẽ lỗi `Unable to resolve module dependency: 'MapVina'`.
+   Package native: [MapVina GL Native Distribution](https://github.com/mapvina/mapvina-gl-native-distribution) (pin `exact: "1.0.0"`).
 
 ### Cấu Hình Web
 
@@ -316,6 +342,40 @@ Nếu bạn gặp vấn đề hoặc có câu hỏi, bạn có thể:
 - Tạo issue trên GitHub repository
 - Kiểm tra các issue hiện có để tìm giải pháp
 - Đóng góp cho dự án bằng cách gửi pull requests
+
+## ✅ Kiểm chứng Build & Runtime
+
+Tài liệu này đã được đồng bộ với codebase và **kiểm chứng bằng build + chạy thực tế** trên
+Android emulator và iOS simulator (Flutter `3.41.6`, Dart `3.11.4`).
+
+### iOS — chạy được (đã kiểm chứng)
+- Bật `flutter config --enable-swift-package-manager`, sau đó `flutter build ios --debug --simulator`
+  build thành công (SPM tự tải `MapVina.xcframework` từ mapvina-gl-native-distribution `1.0.0`).
+- Chạy trên iPhone 16 simulator: **style "streets" của MapVina render đúng** (nền đất be
+  `rgb(244,244,232)`, nước xanh `rgb(138,212,249)`), không crash. Ảnh: `simulator_ios_map_verification.png`.
+
+### Android — build được; **runtime bị chặn bởi lỗi plugin** (đã kiểm chứng)
+- Sau 2 chỉnh sửa (ghim plugin + `mavenLocal()`), `flutter build apk --debug` thành công.
+- **Nhưng khi chạy, app crash native:** `std::runtime_error: You must provide API key for tile sources`.
+  Nguyên nhân: plugin `mapvina_gl 1.0.0` khởi tạo SDK bằng `MapVina.getInstance(context)` (không kèm
+  API key) tại `MapVinaMapController`. Bản 1-tham-số này reset `apiKey = null`, nên tile source bị hủy.
+  Khởi tạo key ở `MainActivity` **không có tác dụng** vì plugin ghi đè lại thành null.
+- **Đã kiểm chứng cách khắc phục:** patch tạm plugin để gọi
+  `MapVina.getInstance(context, "public", WellKnownTileServer.MapVina)` → app chạy, **style MapVina
+  render đúng** (nền be + nước xanh, giống iOS). Ảnh: `emulator_android_map_verification.png`.
+
+> 👉 **Khuyến nghị (upstream):** phát hành lại `mapvina_gl` để truyền API key khi khởi tạo native SDK
+> (hoặc thêm API Dart để set key/tile-server). Đồng thời publish lại `android-sdk-geojson` đúng
+> namespace `io.github.mapvina.geojson.*` để không phải phụ thuộc `mavenLocal()`.
+
+### Style URLs (khớp `lib/constants.dart`)
+- Streets: `https://maps.mapvina.com/styles/v2/streets.json?key=public` (và các domain vùng: `sg-`, `th-`, `tw-`, `my-`).
+- Satellite/3D: `https://tiles.mapvina.com/sats/v1/satellite/satellite.json?key=public`.
+
+### Chưa kiểm chứng trong môi trường này
+- Điều hướng waypoint, geocoding/autocomplete API, và chạy trên thiết bị thật phụ thuộc mạng/khoá; chỉ mô tả theo mã nguồn.
+
+---
 
 ## Kết Luận
 

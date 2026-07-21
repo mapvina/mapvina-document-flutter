@@ -38,7 +38,12 @@ dev_dependencies:
   injectable_generator: ^1.5.3
 
 dependency_overrides:
-  url_launcher_android: ^6.3.32
+  # Pin to classic-Gradle-DSL versions. Newer releases (url_launcher_android >=6.3.32,
+  # shared_preferences_android >=2.4.23) use the AGP built-in-Kotlin
+  # `kotlin { compilerOptions {} }` DSL, which the Flutter 3.41 / AGP 8.9 toolchain in
+  # this project cannot compile ("Unresolved reference: compilerOptions").
+  url_launcher_android: 6.3.29
+  shared_preferences_android: 2.4.13
 flutter:
 
   uses-material-design: true
