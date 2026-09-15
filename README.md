@@ -56,7 +56,7 @@ dependencies:
   cupertino_icons: ^1.0.2
 
   # MapVina Core
-  mapvina_gl: 1.0.0
+  mapvina_gl: 1.0.1
 
   # State Management
   flutter_bloc: ^8.1.4
@@ -357,7 +357,7 @@ Android emulator và iOS simulator (Flutter `3.41.6`, Dart `3.11.4`).
 ### Android — build được; **runtime bị chặn bởi lỗi plugin** (đã kiểm chứng)
 - Sau 2 chỉnh sửa (ghim plugin + `mavenLocal()`), `flutter build apk --debug` thành công.
 - **Nhưng khi chạy, app crash native:** `std::runtime_error: You must provide API key for tile sources`.
-  Nguyên nhân: plugin `mapvina_gl 1.0.0` khởi tạo SDK bằng `MapVina.getInstance(context)` (không kèm
+  Nguyên nhân: plugin `mapvina_gl 1.0.1` khởi tạo SDK bằng `MapVina.getInstance(context)` (không kèm
   API key) tại `MapVinaMapController`. Bản 1-tham-số này reset `apiKey = null`, nên tile source bị hủy.
   Khởi tạo key ở `MainActivity` **không có tác dụng** vì plugin ghi đè lại thành null.
 - **Đã kiểm chứng cách khắc phục:** patch tạm plugin để gọi
