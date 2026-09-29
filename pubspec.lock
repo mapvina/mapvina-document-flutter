@@ -508,26 +508,26 @@ packages:
     dependency: "direct main"
     description:
       name: mapvina_gl
-      sha256: "6d5f77b4a9a527938f2eefbcdb3b39da1ce7eb3f29bde4b20a826be271cea5e5"
+      sha256: e31dea7d46b56a83e8395577cbaaf296beadbce63f363f784ca98e9fc280424c
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.1"
   mapvina_gl_platform_interface:
     dependency: transitive
     description:
       name: mapvina_gl_platform_interface
-      sha256: "492f540268364c760169ff93fbad3fb9be6da82d8bd35ee2c36c1b5d2f3100c2"
+      sha256: "464ca83bc9cdfb8973a992295811067909e29304aaea832d033a72e346ace833"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.1"
   mapvina_gl_web:
     dependency: transitive
     description:
       name: mapvina_gl_web
-      sha256: "544fddd29070087d664f65b5a47e27c71727ef3c372e985110c002d613d58b1f"
+      sha256: "64eccb692593cd190346803dc8f93ae17fc7aac38bd78655bec5b39531a98653"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.1"
   matcher:
     dependency: transitive
     description:

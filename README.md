@@ -265,13 +265,12 @@ Quyền trong `AndroidManifest.xml`:
 <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 ```
 
-> ⚠️ **Hai chỉnh sửa bắt buộc để build được Android** (đã áp dụng, xem mục "Kiểm chứng"):
+> ⚠️ **Lưu ý tương thích Android** (xem mục "Kiểm chứng"):
 > 1. **Ghim plugin dùng Gradle DSL cổ điển** trong `pubspec.yaml` (`url_launcher_android: 6.3.29`,
 >    `shared_preferences_android: 2.4.13`). Bản mới hơn dùng DSL `kotlin { compilerOptions {} }`
 >    của AGP built-in Kotlin mà toolchain AGP 8.9 không biên dịch được.
-> 2. **Thêm `mavenLocal()`** vào `android/build.gradle` (`allprojects.repositories`): artifact
->    `android-sdk-geojson:1.0.0` publish công khai đóng gói sai namespace `com.mapvina.geojson.*`,
->    trong khi `mapvina_gl` cần `io.github.mapvina.geojson.*` (bản đúng chỉ có trong Maven local).
+> GeoJSON/Turf `1.0.1` đã được publish đúng namespace trên Maven Central; không cần
+> `mavenLocal()` để tích hợp Flutter Android.
 
 ### Cấu Hình iOS
 
@@ -355,7 +354,8 @@ Android emulator và iOS simulator (Flutter `3.41.6`, Dart `3.11.4`).
   `rgb(244,244,232)`, nước xanh `rgb(138,212,249)`), không crash. Ảnh: `simulator_ios_map_verification.png`.
 
 ### Android — build được; **runtime bị chặn bởi lỗi plugin** (đã kiểm chứng)
-- Sau 2 chỉnh sửa (ghim plugin + `mavenLocal()`), `flutter build apk --debug` thành công.
+- `flutter pub get` đã resolve `mapvina_gl`, web và platform interface `1.0.1`;
+  `flutter build apk --debug` thành công sau khi bỏ `mavenLocal()` (27/09/2026).
 - **Nhưng khi chạy, app crash native:** `std::runtime_error: You must provide API key for tile sources`.
   Nguyên nhân: plugin `mapvina_gl 1.0.1` khởi tạo SDK bằng `MapVina.getInstance(context)` (không kèm
   API key) tại `MapVinaMapController`. Bản 1-tham-số này reset `apiKey = null`, nên tile source bị hủy.
@@ -365,8 +365,7 @@ Android emulator và iOS simulator (Flutter `3.41.6`, Dart `3.11.4`).
   render đúng** (nền be + nước xanh, giống iOS). Ảnh: `emulator_android_map_verification.png`.
 
 > 👉 **Khuyến nghị (upstream):** phát hành lại `mapvina_gl` để truyền API key khi khởi tạo native SDK
-> (hoặc thêm API Dart để set key/tile-server). Đồng thời publish lại `android-sdk-geojson` đúng
-> namespace `io.github.mapvina.geojson.*` để không phải phụ thuộc `mavenLocal()`.
+> (hoặc thêm API Dart để set key/tile-server). GeoJSON/Turf `1.0.1` đã có namespace đúng.
 
 ### Style URLs (khớp `lib/constants.dart`)
 - Streets: `https://maps.mapvina.com/styles/v2/streets.json?key=public` (và các domain vùng: `sg-`, `th-`, `tw-`, `my-`).
