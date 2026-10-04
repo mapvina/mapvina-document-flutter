@@ -15,7 +15,7 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: ^1.0.2
-  mapvina_gl: 1.0.0
+  mapvina_gl: 1.0.1
   dio: ^4.0.0
   freezed: ^2.0.4
   json_serializable: ^6.2.0

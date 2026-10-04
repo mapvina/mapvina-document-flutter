@@ -1,0 +1,38 @@
+Raw log SHA-256: 55960421a1d07a8cbf83628f8bef8245e61d4786c7f3b2f8f6877e86681c5fd0
+Excerpt only; full output retained outside Git in the local audit directory.
+
+Running Gradle task 'assembleDebug'...
+e: file://$HOME/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.32/android/build.gradle.kts:28:1: Unresolved reference. None of the following candidates is applicable because of receiver type mismatch:
+public fun DependencyHandler.kotlin(module: String, version: String? = ...): Any defined in org.gradle.kotlin.dsl
+public fun PluginDependenciesSpec.kotlin(module: String): PluginDependencySpec defined in org.gradle.kotlin.dsl
+e: file://$HOME/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.32/android/build.gradle.kts:29:5: Unresolved reference: compilerOptions
+e: file://$HOME/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.32/android/build.gradle.kts:30:9: Unresolved reference: jvmTarget
+... selected diagnostic lines ...
+e: file://$HOME/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.32/android/build.gradle.kts:28:1: Unresolved reference. None of the following candidates is applicable because of receiver type mismatch:
+e: file://$HOME/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.32/android/build.gradle.kts:29:5: Unresolved reference: compilerOptions
+e: file://$HOME/.pub-cache/hosted/pub.dev/url_launcher_android-6.3.32/android/build.gradle.kts:30:9: Unresolved reference: jvmTarget
+           ^ Unresolved reference. None of the following candidates is applicable because of receiver type mismatch:
+  Line 29:     compilerOptions {
+               ^ Unresolved reference: compilerOptions
+                   ^ Unresolved reference: jvmTarget
+BUILD FAILED in 28s
+EXIT_CODE=1
+... final output ...
+               ^ Unresolved reference: compilerOptions
+
+  Line 30:         jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+                   ^ Unresolved reference: jvmTarget
+
+3 errors
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights.
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 28s
+Running Gradle task 'assembleDebug'...                             28.8s
+Gradle task assembleDebug failed with exit code 1
+
+EXIT_CODE=1

@@ -1,0 +1,30 @@
+Raw log SHA-256: b7e8e2b3c706662232957987bc6641e8f7046f5a8d929f29e0db81592d874b2e
+Excerpt only; full output retained outside Git in the local audit directory.
+
+Resolving dependencies...
+Downloading packages...
+  _fe_analyzer_shared 61.0.0 (108.0.0 available)
+  analyzer 5.13.0 (14.4.0 available)
+  archive 4.0.9 (4.3.0 available)
+  args 2.5.0 (2.7.0 available)
+... selected diagnostic lines ...
+EXIT_CODE=0
+... final output ...
+  url_launcher_macos 3.2.0 (3.2.6 available)
+  url_launcher_windows 3.1.2 (3.1.6 available)
+  uuid 4.5.1 (4.6.0 available)
+  vector_math 2.2.0 (2.4.3 available)
+  vm_service 14.2.5 (15.3.0 available)
+  watcher 1.1.1 (1.2.1 available)
+  web_socket_channel 2.4.0 (3.0.3 available)
+  xdg_directories 1.0.4 (1.1.0 available)
+  xml 7.0.1 (7.1.0 available)
+  yaml 3.1.2 (3.1.4 available)
+Changed 6 dependencies!
+Dependencies are affected by security advisories:
+  [^0]: https://github.com/advisories/GHSA-9324-jv53-9cc8
+  [^1]: https://github.com/advisories/GHSA-jwpw-q68h-r678
+100 packages have newer versions incompatible with dependency constraints.
+Try `flutter pub outdated` for more information.
+
+EXIT_CODE=0

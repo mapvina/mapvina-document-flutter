@@ -2,6 +2,11 @@ Update Document
 
 # MapVina Flutter Demo Application
 
+> **Verification 04/10/2026 — BLOCKED.**
+> Three public Flutter packages resolve `1.0.1`; native dependency resolution/runtime is not accepted.
+> See [verified setup, evidence and limitations](docs/verification/2026-10-04/README.md) before following older examples.
+> No new SDK was published by this documentation update.
+
 ## Giới Thiệu
 
 Đây là ứng dụng demo cho MapVina Flutter GL - một thư viện bản đồ mạnh mẽ dành cho ứng dụng Flutter. Ứng dụng demo này minh họa các tính năng chính của MapVina bao gồm hiển thị bản đồ, tìm kiếm địa chỉ, clustering, animation, và nhiều tính năng khác trên nhiều quốc gia khác nhau.
@@ -55,7 +60,7 @@ dependencies:
     sdk: flutter
   
   # MapVina Core
-  mapvina_gl: 1.0.0
+  mapvina_gl: 1.0.1
   
   # State Management
   flutter_bloc: ^8.1.4
@@ -319,4 +324,4 @@ Nếu bạn gặp vấn đề hoặc có câu hỏi, bạn có thể:
 
 ## Kết Luận
 
-MapVina cung cấp giải pháp bản đồ mạnh mẽ cho ứng dụng Flutter với nhiều tính năng và tùy chọn tùy chỉnh. Bằng cách làm theo hướng dẫn này, bạn có thể tích hợp thành công MapVina vào dự án Flutter của mình và tận dụng các khả năng của nó để tạo trải nghiệm bản đồ hấp dẫn cho người dùng.
+Các ví dụ trên là tham khảo API. Audit ngày 04/10/2026 resolve package public `1.0.1` thành công nhưng build Android/iOS bị chặn; không coi README này là hướng dẫn production đã chạy được. Xem báo cáo và log trước khi tích hợp.
