@@ -1,0 +1,26 @@
+Raw log SHA-256: ac21035dfad1653390ea16022c0084ecf901204d983b007c976f6c23b2149280
+Excerpt only; full output retained outside Git in the local audit directory.
+
+Building com.example.mapvina for simulator (ios)...
+Running pod install...                                           1,082ms
+Running Xcode build...
+Xcode build done.                                           23.8s
+Failed to build iOS app
+Swift Compiler Error (Xcode): Unable to resolve module dependency: 'MapVina'
+... selected diagnostic lines ...
+Swift Compiler Error (Xcode): Unable to resolve module dependency: 'MapVina'
+EXIT_CODE=1
+... final output ...
+Building com.example.mapvina for simulator (ios)...
+Running pod install...                                           1,082ms
+Running Xcode build...
+Xcode build done.                                           23.8s
+Failed to build iOS app
+Swift Compiler Error (Xcode): Unable to resolve module dependency: 'MapVina'
+import MapVina
+       ^
+$HOME/.pub-cache/hosted/pub.dev/mapvina_gl-1.0.1/ios/mapvina_gl/Sources/mapvina_gl/Constants.swift:0:7
+
+Encountered error while building for simulator.
+
+EXIT_CODE=1
