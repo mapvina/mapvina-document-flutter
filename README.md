@@ -7,6 +7,10 @@ Update Document
 > See [verified setup, evidence and limitations](docs/verification/2026-10-04/README.md) before following older examples.
 > No new SDK was published by this documentation update.
 
+> **Documentation update: 01/11/2026.**
+> Integration guides and the dated verification report are available on `main`.
+> This README refresh does not publish SDKs or rerun build/runtime checks; the verification results above are dated 04/10/2026.
+
 ## Giới Thiệu
 
 Đây là ứng dụng demo cho MapVina Flutter GL - một thư viện bản đồ mạnh mẽ dành cho ứng dụng Flutter. Ứng dụng demo này minh họa các tính năng chính của MapVina bao gồm hiển thị bản đồ, tìm kiếm địa chỉ, clustering, animation, và nhiều tính năng khác trên nhiều quốc gia khác nhau.
